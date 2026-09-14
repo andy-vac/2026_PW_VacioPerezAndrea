@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registrar Asistencia - CECyT 9</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <header> <a href="./detalle.html"> </a> Volver al detalle del taller</header>
+
+  <main>
+    <form class="formulario-registro">
+      <h1>Formulario de registro de asistencia</h1>
+
+      <label for="nombre">Nombre Completo:</label>
+      <input type="text" id="nombre" name="nombre" required>
+      <span class="error" id="error-nombre"></span>
+      
+      <label for="boleta">Número de boleta:</label>
+      <input type="text" id="boleta" name="boleta" required>
+      <span class="error" id="error-boleta"></span>
+
+      <label for="fecha">Fecha de Registro (DD/MM/AAAA)</label>
+      <input type="text" id="fecha" name="fecha" placeholder="DD/MM/AAAA" required>
+      <span class="error" id="error-fecha"></span>
+
+      <button type="submit">Registrar asistencia</button>
+      <p class="mensaje-exito" id="mensaje-exitoso"></p>
+      
+      <button type="submit">
+        Registrar asistencia
+      </button>
+    </form>
+  </main>
+
+  <script src="PrimerParcial/js/validaciones.js"></script>
+</body>
+</html>
