@@ -7,10 +7,13 @@
 </head>
 
 <body>
-  <header> <a href="./detalle.html"> </a> Volver al detalle del taller</header>
+  <header> 
+    <a href="./detalle.html">Volver al detalle del taller</a> 
+  </header>
 
   <main>
-    <form class="formulario-registro">
+    <form class="formulario-registro" id="form-registro">
+
       <h1>Formulario de registro de asistencia</h1>
 
       <label for="nombre">Nombre Completo:</label>
@@ -26,14 +29,12 @@
       <span class="error" id="error-fecha"></span>
 
       <button type="submit">Registrar asistencia</button>
+
       <p class="mensaje-exito" id="mensaje-exitoso"></p>
       
-      <button type="submit">
-        Registrar asistencia
-      </button>
     </form>
   </main>
 
-  <script src="PrimerParcial/js/validaciones.js"></script>
+  <script src="./js/validaciones.js"></script>
 </body>
 </html>
