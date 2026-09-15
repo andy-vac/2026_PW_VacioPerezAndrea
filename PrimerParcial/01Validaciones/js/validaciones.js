@@ -21,7 +21,7 @@ const mensajes = {
 };
 
 function validarCampo (campo, valor) {
-    return patrones [campo].test()(valor.trim());
+    return patrones [campo].test(valor.trim());
 }
 
 //Necesitamos ver el resto del archivo DOM,
