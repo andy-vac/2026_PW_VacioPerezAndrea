@@ -1,68 +1,69 @@
-const cursos = [
+const talleres = [
     { nombre: 'Introducción a Python', instructor: 'Ing. María López', cupo: 25, inscritos: 25 },
     { nombre: 'Fundamentos de Redes', instructor: 'Ing. Carlos Ramírez', cupo: 30, inscritos: 18 },
     { nombre: 'Diseño de Bases de Datos', instructor: 'Ing. Ana Torres', cupo: 20, inscritos: 20 },
     { nombre: 'Desarrollo Web con JavaScript', instructor: 'Ing. María López', cupo: 25, inscritos: 10 }
 ];
- 
-function renderizarTablaCursos() {
-    const tabla = document.getElementById('tabla-cursos');
+
+function renderizarTablaTalleres() {
+    const tabla = document.getElementById('tabla-talleres');
     let cuerpoTabla = tabla.querySelector('tbody');
- 
+
     if (!cuerpoTabla) {
         cuerpoTabla = document.createElement('tbody');
         tabla.appendChild(cuerpoTabla);
     }
- 
-    cuerpoTabla.innerHTML = cursos.map(curso => `
+
+    cuerpoTabla.innerHTML = talleres.map(taller => `
         <tr>
-            <td>${curso.nombre}</td>
-            <td>${curso.instructor}</td>
-            <td>${curso.cupo}</td>
-            <td>${curso.inscritos}</td>
+            <td>${taller.nombre}</td>
+            <td>${taller.instructor}</td>
+            <td>${taller.cupo}</td>
+            <td>${taller.inscritos}</td>
         </tr>
     `).join('');
 }
- 
-renderizarTablaCursos();
- 
-const formularioCursos = document.getElementById('formulario-cursos');
+
+renderizarTablaTalleres();
+
+const formularioTalleres = document.getElementById('formulario-talleres');
 const salidaResultado = document.getElementById('salida-resultado');
 const selectorOperacion = document.getElementById('selector-operacion');
- 
-formularioCursos.addEventListener('submit', (evento) => {
+
+formularioTalleres.addEventListener('submit', (evento) => {
     evento.preventDefault();
- 
+
     const operacionElegida = selectorOperacion.value;
- 
+
     if (operacionElegida === 'forEach') {
-        salidaResultado.textContent = cursos
-            .map((c) => `- ${c.nombre} (${c.inscritos}/${c.cupo})`)
+        salidaResultado.textContent = talleres
+            .map((t) => `- ${t.nombre} (${t.inscritos}/${t.cupo})`)
             .join('\n');
     }
     else if (operacionElegida === 'map') {
-        const listaNombres = cursos.map((c) => c.nombre);
+        const listaNombres = talleres.map((t) => t.nombre);
         salidaResultado.textContent = `[ ${listaNombres.join(', ')} ]`;
     }
     else if (operacionElegida === 'filter') {
-        const cursosLlenos = cursos.filter((c) => c.inscritos >= c.cupo);
-        salidaResultado.textContent = cursosLlenos.map((c) => c.nombre).join('\n');
+        const talleresLlenos = talleres.filter((t) => t.inscritos >= t.cupo);
+        salidaResultado.textContent = talleresLlenos.map((t) => t.nombre).join('\n');
     }
     else if (operacionElegida === 'find') {
-        const cursoEncontrado = cursos.find((c) => c.instructor === 'Ing. María López');
-        salidaResultado.textContent = cursoEncontrado
-            ? cursoEncontrado.nombre
-            : 'No se encontró ningún curso';
+        const tallerEncontrado = talleres.find((t) => t.instructor === 'Ing. María López');
+        salidaResultado.textContent = tallerEncontrado
+            ? tallerEncontrado.nombre
+            : 'No se encontró ningún taller';
     }
     else if (operacionElegida === 'reduce') {
-        const sumaInscritos = cursos.reduce((acumulado, c) => acumulado + c.inscritos, 0);
+        const sumaInscritos = talleres.reduce((acumulado, t) => acumulado + t.inscritos, 0);
         salidaResultado.textContent = `El total de inscritos hasta el momento es: ${sumaInscritos}`;
     }
     else if (operacionElegida === 'filter-map') {
-        const cursosConCupo = cursos
-            .filter((c) => c.inscritos < c.cupo)
-            .map((c) => c.nombre);
-        salidaResultado.textContent = cursosConCupo.join(' - ');
+        const talleresConCupo = talleres
+            .filter((t) => t.inscritos < t.cupo)
+            .map((t) => t.nombre);
+
+        salidaResultado.textContent = talleresConCupo.join(' - ');
     }
     else {
         salidaResultado.textContent = 'Selecciona una operación válida.';
