@@ -7,7 +7,7 @@ body {
 }
  
 header {
-    background-color: #0b3b60;
+    background-color: #91a2af;
     color: #ffffff;
     padding: 1rem;
 }
@@ -17,7 +17,7 @@ h1 {
 }
  
 h2 {
-    color: #0b3b60;
+    color: #457599;
 }
  
 table {
@@ -27,13 +27,13 @@ table {
 }
  
 th, td {
-    border: 1px solid #0b3b60;
+    border: 1px solid #000000;
     padding: 0.5rem;
     text-align: left;
 }
  
 th {
-    background-color: #0b3b60;
+    background-color: #91a2af;
     color: #ffffff;
 }
  
@@ -46,27 +46,19 @@ tr:nth-child(even) {
 }
  
 select {
-    padding: 0.4rem;
+    padding: 1rem;
     border: 1px solid #0b3b60;
 }
  
 button {
-    background-color: #1d6fa5;
-    color: #ffffff;
+    background-color: #91a2af;
+    color: #000000;
     border: none;
     padding: 0.5rem 1rem;
     cursor: pointer;
 }
  
 button:hover {
-    background-color: #0b3b60;
+    background-color: #005291;
 }
  
-.salida {
-    display: block;
-    white-space: pre-wrap;
-    background-color: #000000;
-    color: #ffffff;
-    padding: 1rem;
-    margin-top: 1rem;
-}
