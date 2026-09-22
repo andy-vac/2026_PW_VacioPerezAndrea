@@ -32,12 +32,13 @@
                 <div class="campos">
                     <label for="selector-operacion">Operación:</label>
                     <select name="selector-operacion" id="selector-operacion">
-                        <option value="forEach">forEach - Lista simple</option>
-                        <option value="map">map - Copia solo nombres</option>
-                        <option value="filter">filter - Talleres con cupo lleno</option>
-                        <option value="find">find - Buscar por instructor</option>
-                        <option value="reduce">reduce - Total de inscritos</option>
-                        <option value="filter-map">filter + map - Talleres disponibles</option>
+                        <option value="" disabled selected>-- Selecciona una operación --</option>
+                        <option value="forEach">forEach</option>
+                        <option value="map">map</option>
+                        <option value="filter">filter</option>
+                        <option value="find">find</option>
+                        <option value="reduce">reduce</option>
+                        <option value="filter-map">filter + map</option>
                     </select>
                 </div>
                 <button type="submit">Ejecutar</button>

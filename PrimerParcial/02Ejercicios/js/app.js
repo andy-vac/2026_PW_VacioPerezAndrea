@@ -7,14 +7,14 @@ const cursos = [
  
 function renderizarTablaCursos() {
     const tabla = document.getElementById('tabla-cursos');
-    let Tabla = tabla.querySelector('tbody');
+    let cuerpoTabla = tabla.querySelector('tbody');
  
     if (!cuerpoTabla) {
-        Tabla = document.createElement('tbody');
-        tabla.appendChild(Tabla);
+        cuerpoTabla = document.createElement('tbody');
+        tabla.appendChild(cuerpoTabla);
     }
  
-    Tabla.innerHTML = cursos.map(curso => `
+    cuerpoTabla.innerHTML = cursos.map(curso => `
         <tr>
             <td>${curso.nombre}</td>
             <td>${curso.instructor}</td>
@@ -63,5 +63,8 @@ formularioCursos.addEventListener('submit', (evento) => {
             .filter((c) => c.inscritos < c.cupo)
             .map((c) => c.nombre);
         salidaResultado.textContent = cursosConCupo.join(' - ');
+    }
+    else {
+        salidaResultado.textContent = 'Selecciona una operación válida.';
     }
 });
