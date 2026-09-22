@@ -10,13 +10,14 @@
     <header>
         <h1>Talleres disponibles</h1>
     </header>
+
     <main>
         <section class="ejercicio">
             <h2 id="titulo-talleres">Arreglos del código <code>arreglos.js</code></h2>
             <p>Gestión de talleres con JavaScript</p>
- 
+
             <div class="tabla-scroll">
-                <table id="tabla-cursos">
+                <table id="tabla-talleres">
                     <thead>
                         <tr>
                             <th>Nombre</th>
@@ -27,11 +28,11 @@
                     </thead>
                 </table>
             </div>
- 
-            <form id="formulario-cursos" class="formulario">
-                <div class="campos">
+
+            <form id="formulario-talleres" class="formulario">
+                <div class="talleres">
                     <label for="selector-operacion">Operación:</label>
-                    <select name="selector-operacion" id="selector-operacion">
+                    <select id="selector-operacion" name="selector-operacion">
                         <option value="" disabled selected>-- Selecciona una operación --</option>
                         <option value="forEach">Lista simple</option>
                         <option value="map">Solo nombres</option>
@@ -41,12 +42,14 @@
                         <option value="filter-map">Talleres disponibles</option>
                     </select>
                 </div>
+
                 <button type="submit">Ejecutar</button>
             </form>
- 
-            <output class="salida" id="salida-resultado" for="formulario-cursos"></output>
+
+            <output class="salida" id="salida-resultado" for="formulario-talleres"></output>
         </section>
     </main>
+
     <script src="js/app.js"></script>
 </body>
 </html>
