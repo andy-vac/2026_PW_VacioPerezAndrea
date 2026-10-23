@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  color: #1f2937;
+  background: #f9fafb;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 24px;
+  background: #1f2937;
+}
+
+nav a {
+  color: #fff;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 360px;
+  margin-bottom: 24px;
+}
+
+input {
+  padding: 6px 8px;
+}
+
+button {
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.error {
+  color: #b91c1c;
+}
