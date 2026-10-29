@@ -3,9 +3,9 @@ url: "{{baseUrl}}/talleres"
 method: POST
 body:
   type: json
-  content: "{,\r
+  content: "{\r
 
-    \  \"instructor\": \"Ing. Sin nombre\",\r
+    \  \"instructor\": \"Ing. Sin nombre\"\r
 
     }"
 order: 6000
