@@ -1,0 +1,18 @@
+$kind: http-request
+name: Crear usuario
+url: "{{baseUrl}}/usuarios"
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"nombre\": \"Andrea Vacio Perez\", \r
+
+    \    \"correo\": \"segundo@alumno.ipn.mx\", \r
+
+    \    \"contrasena\": \"2481632a\", \r
+
+    \    \"boleta\": \"2026090676\"\r
+
+    }"
+order: 2000

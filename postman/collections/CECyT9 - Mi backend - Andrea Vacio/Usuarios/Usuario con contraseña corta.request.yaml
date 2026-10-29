@@ -1,0 +1,17 @@
+$kind: http-request
+url: "{{baseUrl}}/usuarios"
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"nombre\": \"Andrea Vacio Perez\", \r
+
+    \    \"correo\": \"andreavacio@alumno.ipn.mx\", \r
+
+    \    \"contrasena\": \"corta\", \r
+
+    \    \"boleta\": \"2026090123\"\r
+
+    }"
+order: 8000

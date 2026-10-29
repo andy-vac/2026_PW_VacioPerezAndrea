@@ -1,0 +1,7 @@
+$kind: http-request
+url: "{{baseUrl}}/usuarios"
+method: POST
+body:
+  type: json
+  content: "{\r\n    \"nombre\": \"X\"\r\n}"
+order: 9000

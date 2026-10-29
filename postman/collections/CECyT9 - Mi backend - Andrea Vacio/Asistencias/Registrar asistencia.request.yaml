@@ -1,0 +1,15 @@
+$kind: http-request
+url: "{{baseUrl}}/asistencias"
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"taller_id\": \"{{tallerId}}\",\r
+
+    \    \"nombre_alumno\": \"Andrea Vacio Perez\",\r
+
+    \    \"boleta\": \"2025090379\"\r
+
+    }"
+order: 2000

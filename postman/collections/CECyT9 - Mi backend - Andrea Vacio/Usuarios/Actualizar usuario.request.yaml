@@ -1,0 +1,7 @@
+$kind: http-request
+url: "{{baseUrl}}/usuarios/{{usuarioId}}"
+method: PUT
+body:
+  type: json
+  content: "{\r\n    \"rol\": \"docente\"\r\n}"
+order: 10000

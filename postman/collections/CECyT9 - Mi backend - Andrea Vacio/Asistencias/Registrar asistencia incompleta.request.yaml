@@ -1,0 +1,11 @@
+$kind: http-request
+url: "{{baseUrl}}/asistencias"
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"nombre_alumno\": \"Andrea Vacio Perez\"\r
+
+    }"
+order: 4000
