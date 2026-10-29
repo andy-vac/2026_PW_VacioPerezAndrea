@@ -62,3 +62,49 @@
   color: #6b1d3a;
   font-weight: 600;
 }
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+}
+
+.tabla th,
+.tabla td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tabla th {
+  background: #6b1d3a;
+  color: #fff;
+}
+
+.formUsuario {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.formUsuario input,
+.formUsuario button {
+  padding: 8px 10px;
+  box-sizing: border-box;
+}
+
+.formUsuario button {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  background: #6b1d3a;
+  color: #fff;
+  font-weight: 600;
+}
+
+.formUsuario button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}

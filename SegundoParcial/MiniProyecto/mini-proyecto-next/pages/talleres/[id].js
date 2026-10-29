@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { pedirJSON } from '../../lib/api';
 import { formatearFecha, ocultarBoleta } from '../../lib/formato';
-import { validarBoleta } from '../../lib/validaciones';
+import { validarBoleta, validarNombre, soloDigitos } from '../../lib/validaciones';
 import estilos from '../../styles/Talleres.module.css';
 
 export default function DetalleTaller() {
@@ -22,7 +22,7 @@ export default function DetalleTaller() {
 
   useEffect(() => {
     if (!router.isReady) return;
-    if (router.query.boleta) setBoleta(String(router.query.boleta));
+    if (router.query.boleta) setBoleta(soloDigitos(String(router.query.boleta)));
     if (router.query.nombre) setNombre(String(router.query.nombre));
     cargar();
   }, [router.isReady, id]);
@@ -46,9 +46,11 @@ export default function DetalleTaller() {
     setErrorForm('');
     setExito('');
 
-    const nombreLimpio = nombre.trim();
+    const nombreLimpio = nombre.trim().replace(/\s+/g, ' ');
     const boletaLimpia = boleta.trim();
-    if (!nombreLimpio) return setErrorForm('Escribe tu nombre.');
+    if (!validarNombre(nombreLimpio)) {
+      return setErrorForm('El nombre debe tener entre 3 y 60 letras, sin números ni símbolos.');
+    }
     if (!validarBoleta(boletaLimpia)) return setErrorForm('La boleta debe tener 10 dígitos.');
     if (asistencias.some((a) => a.boleta === boletaLimpia)) {
       return setErrorForm('Esa boleta ya está inscrita en este taller.');
@@ -108,8 +110,18 @@ export default function DetalleTaller() {
       <section className={estilos.panel}>
         <h2>Inscribirme</h2>
         <form onSubmit={inscribir} className="formulario">
-          <input placeholder="Nombre completo" value={nombre} onChange={(e) => setNombre(e.target.value)} />
-          <input placeholder="Boleta (10 dígitos)" value={boleta} onChange={(e) => setBoleta(e.target.value)} />
+          <input
+            placeholder="Nombre completo"
+            maxLength={60}
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
+          />
+          <input
+            placeholder="Boleta (10 dígitos)"
+            inputMode="numeric"
+            value={boleta}
+            onChange={(e) => setBoleta(soloDigitos(e.target.value))}
+          />
           <button type="submit" disabled={lleno || enviando}>
             {lleno ? 'Sin lugares' : enviando ? 'Inscribiendo…' : 'Inscribirme'}
           </button>
@@ -122,7 +134,7 @@ export default function DetalleTaller() {
       {ocupados === 0 ? (
         <p>Todavía no hay inscritos. ¡Sé el primero!</p>
       ) : (
-        <table>
+        <table className={estilos.tabla}>
           <thead>
             <tr>
               <th>#</th>
