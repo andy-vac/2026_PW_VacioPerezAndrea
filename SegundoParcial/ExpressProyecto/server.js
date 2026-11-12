@@ -1,48 +1,44 @@
+require('dotenv').config();
 const express = require('express');
 
 const app = express();
 app.use(express.json());
 
-const PORT = 4000;
+const PORT = process.env.PORT || 3001;
 
-// controladores
 const usuarios = require('./Controlador/usuarios_controlador');
 const talleres = require('./Controlador/talleres_controlador');
 const asistencias = require('./Controlador/asistencias_controlador');
 
-// rutas de prueba
-app.get('/saludo', (req, res) => {
-    res.json({ mensaje: 'Hola, el servidor Express está funcionando' });
+// prueba de vida
+app.get('/', (req, res) => {
+    res.json({ mensaje: 'API de Registro de Asistencia - CECyT 9 funcionando correctamente' });
 });
 
-app.post('/eco', (req, res) => {
-    const { texto } = req.body;
-    if (!texto) {
-        return res.status(400).json({ error: 'El texto es obligatorio' });
-    }
-    res.status(201).json({ eco: texto });
-});
+const api = express.Router();
 
 // Usuarios
-app.get('/usuarios', usuarios.listarUsuarios);
-app.get('/usuarios/:id', usuarios.obtenerUsuario);
-app.post('/usuarios', usuarios.crearUsuario);
-app.put('/usuarios/:id', usuarios.actualizarUsuario);
-app.delete('/usuarios/:id', usuarios.eliminarUsuario);
+api.get('/usuarios', usuarios.listarUsuarios);
+api.get('/usuarios/:id', usuarios.obtenerUsuario);
+api.post('/usuarios', usuarios.crearUsuario);
+api.put('/usuarios/:id', usuarios.actualizarUsuario);
+api.delete('/usuarios/:id', usuarios.eliminarUsuario);
 
 // Talleres
-app.get('/talleres', talleres.listarTalleres);
-app.get('/talleres/:id', talleres.obtenerTaller);
-app.get('/talleres/:id/asistencias', talleres.listarAsistentesDeTaller);
-app.post('/talleres', talleres.crearTaller);
-app.put('/talleres/:id', talleres.actualizarTaller);
-app.delete('/talleres/:id', talleres.eliminarTaller);
+api.get('/talleres', talleres.listarTalleres);
+api.get('/talleres/:id', talleres.obtenerTaller);
+api.get('/talleres/:id/asistencias', talleres.listarAsistentesDeTaller);
+api.post('/talleres', talleres.crearTaller);
+api.put('/talleres/:id', talleres.actualizarTaller);
+api.delete('/talleres/:id', talleres.eliminarTaller);
 
 // Asistencias
-app.get('/asistencias', asistencias.listarAsistencias);
-app.get('/asistencias/:id', asistencias.obtenerAsistencia);
-app.post('/asistencias', asistencias.registrarAsistencia);
-app.delete('/asistencias/:id', asistencias.eliminarAsistencia);
+api.get('/asistencias', asistencias.listarAsistencias);
+api.get('/asistencias/:id', asistencias.obtenerAsistencia);
+api.post('/asistencias', asistencias.registrarAsistencia);
+api.delete('/asistencias/:id', asistencias.eliminarAsistencia);
+
+app.use('/api', api);
 
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);
